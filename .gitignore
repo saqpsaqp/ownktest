@@ -18,3 +18,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/WebServiceTest/nbproject/private/
+/WebApplication1/nbproject/private/
