@@ -1,17 +1,17 @@
 package com.ownk.practical.backend.model;
 
 public class Vendedor {
-    private int id;
+    private int idVend;
     private String nombres;
     private String apellidos;
     private String cedula;
 
-    public int getId() {
-        return id;
+    public int getIdVend() {
+        return idVend;
     }
     
-    public void setId(int id) {
-        this.id = id;
+    public void setIdVend(int idVend) {
+        this.idVend = idVend;
     }
 
     public String getNombres() {

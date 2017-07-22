@@ -7,11 +7,16 @@ import java.util.Collection;
 import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/api/vendedor/",
+                    method = RequestMethod.GET,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
 public class VendedorController {
     
     private VendedorMapper vendedorMapper;
@@ -20,11 +25,27 @@ public class VendedorController {
         this.vendedorMapper = vendedorMapper;
     }
         
-    @RequestMapping(value = "/api/vendedor/all",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/")
     public List<Vendedor> getVendedor(){
         return vendedorMapper.getAll();
     }
+    
+    @GetMapping("/{id}")    
+    public List<Vendedor> getVendedorById(@PathVariable("id") int id){
+        return vendedorMapper.getById(id);
+    }
+    
+    @GetMapping("/add/{nombres}/{apellidos}/{cedula}")
+    public List<Vendedor> add(  @PathVariable("nombres") String nombres,
+                                @PathVariable("apellidos") String apellidos,
+                                @PathVariable("cedula") String cedula){
+        Vendedor vendedor = new Vendedor();
+        vendedor.setNombres(nombres);
+        vendedor.setApellidos(apellidos);
+        vendedor.setCedula(cedula);
+        vendedorMapper.insert(vendedor);
+        return vendedorMapper.getAll();
+    }
+    
     
 }

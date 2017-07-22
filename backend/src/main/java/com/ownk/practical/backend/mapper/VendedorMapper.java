@@ -14,13 +14,12 @@ public interface VendedorMapper {
     @Select("select * from Vendedor")
     public List<Vendedor> getAll();
     
-    @Select("select * from Vendedor where id=#{id}")
-    public List<Vendedor> findById(@PathParam("id") final Integer id);
+    @Select("select * from Vendedor where idVend=#{id}")
+    public List<Vendedor> getById(@PathParam("id") final Integer id);
 
     @Insert("insert into Vendedor(nombres,apellidos,cedula) values (#{nombres},#{apellidos},#{cedula})")
-    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id",
+    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "idVend",
             before = false, resultType = Integer.class)
     public void insert(Vendedor vendedor);
-   
-    
+  
 }
