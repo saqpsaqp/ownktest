@@ -1,5 +1,6 @@
 package com.ownk.practical.backend;
 
+import com.ownk.practical.backend.model.Producto;
 import com.ownk.practical.backend.model.Vendedor;
 import org.apache.ibatis.type.MappedTypes;
 import org.mybatis.spring.annotation.MapperScan;
