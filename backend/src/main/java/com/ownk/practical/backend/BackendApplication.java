@@ -15,16 +15,8 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @MapperScan("com.ownk.practical.backend.mapper")
 @SpringBootApplication
-public class BackendApplication extends SpringBootServletInitializer{
-
+public class BackendApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
-        
-        @Override
-        protected SpringApplicationBuilder configure (SpringApplicationBuilder application){
-            return application.sources(BackendApplication.class);
-        
-        }
-        
 }

@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +36,7 @@ public class ProductoController {
         return productoMapper.getById(id);
     }
     
-    @GetMapping("/add/{codigo}/{descripcion}/{imagen}")
+    /*@GetMapping("/add/{codigo}/{descripcion}/{imagen}")
     public List<Producto> add(  @PathVariable("codigo") String codigo,
                                 @PathVariable("descripcion") String descripcion,
                                 @PathVariable("imagen") String imagen){
@@ -45,7 +46,12 @@ public class ProductoController {
         producto.setImagen(imagen);
         productoMapper.insert(producto);
         return productoMapper.getAll();
-    }
+    }*/
+    @RequestMapping(value = "/add/",method = RequestMethod.POST)
+    public List<Producto> add(@RequestBody Producto producto){
+        productoMapper.insert(producto);
+        return productoMapper.getAll();
+    }    
     
     
 }
