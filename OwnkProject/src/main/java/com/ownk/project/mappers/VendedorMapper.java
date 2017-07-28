@@ -4,6 +4,7 @@ import com.ownk.project.models.Producto;
 import com.ownk.project.models.Vendedor;
 import java.util.List;
 import javax.websocket.server.PathParam;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
@@ -41,5 +42,8 @@ public interface VendedorMapper {
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "idVend",
             before = false, resultType = Integer.class)
     public void insert(Vendedor vendedor);
+
+    @Delete("delete from Vendedor where idVend=#{id}")
+    public void delete(int id);
 
 }

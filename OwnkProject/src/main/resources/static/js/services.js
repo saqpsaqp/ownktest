@@ -67,4 +67,23 @@ app.controller('OwnkController', ['$scope', '$http',
                 $scope.texto = error.status;
             });
         }
+        
+        $scope.delVendedor = function () {
+            $http.post('/api/vendedor/del',
+                    {
+                        nombres: $scope.nombres,
+                        apellidos: $scope.apellidos,
+                        cedula: $scope.cedula
+                    }
+            ).then(function (success) {   
+                $scope.nombres=null;
+                $scope.apellidos=null;
+                $scope.cedula=null;
+                $scope.vendedores = success.data;
+                $scope.texto = success.status;
+            }, function (error) {
+                $scope.texto = error.status;
+            });
+        }
+        
     }]);

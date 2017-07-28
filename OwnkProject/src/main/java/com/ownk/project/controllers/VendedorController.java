@@ -43,4 +43,11 @@ public class VendedorController {
         vendedorMapper.insert(vendedor);
         return vendedorMapper.getAll();
     }
+    
+    @RequestMapping(value = "/del/{id}",method = RequestMethod.GET)
+    public List<Vendedor> addPost(@PathVariable("id") int id){
+        vendedorMapper.delete(id);
+        return vendedorMapper.getAll();
+    }
+    
 }
